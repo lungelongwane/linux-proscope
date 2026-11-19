@@ -1,0 +1,29 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "linux-proscope"
+dynamic = ["version"]
+description = "A lightweight, zero-dependency terminal system monitor that reads /proc directly"
+readme = "README.md"
+license = { text = "MIT" }
+authors = [{ name = "Lungelo Ngwane" }]
+requires-python = ">=3.8"
+keywords = ["linux", "monitor", "tui", "procfs", "htop", "curses"]
+classifiers = [
+    "Environment :: Console :: Curses",
+    "Operating System :: POSIX :: Linux",
+    "Programming Language :: Python :: 3",
+    "Topic :: System :: Monitoring",
+    "License :: OSI Approved :: MIT License",
+]
+
+[project.scripts]
+proscope = "proscope.__main__:main"
+
+[tool.setuptools]
+packages = ["proscope"]
+
+[tool.setuptools.dynamic]
+version = { attr = "proscope.__version__" }

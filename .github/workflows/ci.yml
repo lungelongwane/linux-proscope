@@ -1,0 +1,23 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.8", "3.10", "3.12", "3.13"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - run: pip install pytest
+      - run: python -m pytest -v
+      - name: Snapshot smoke test
+        run: python -m proscope --once && python -m proscope --json -n 3 > /dev/null
+      - name: Install script
+        run: bash install.sh && ~/.local/bin/proscope --version && bash install.sh --uninstall
