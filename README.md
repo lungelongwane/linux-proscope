@@ -116,7 +116,7 @@ pip install pytest
 python -m pytest -v
 ```
 
-Every parser takes a `root` argument, so the tests build a small fake `/proc` in a temp directory and get the same results on any machine. CI runs the tests on Python 3.8 through 3.13.
+Every parser takes a `root` argument, so the tests build a small fake `/proc` in a temp directory and get the same results on any machine. CI runs the tests on Python 3.10 through 3.13.
 
 ## Roadmap
 
